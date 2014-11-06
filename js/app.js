@@ -6,6 +6,9 @@
     defaults: {
       title: "do someting!",
       completed: false
+    },
+    toggle : function() {
+      this.set('completed', !this.get('completed'));
     }
   });
 
@@ -13,9 +16,13 @@
     title: "do it!",
     completed: true
   });
-  console.log(task1.toJSON());
 
-  var task2 = new Task();
-  console.log(task2.toJSON());
+  task1.set('title', 'newTitle');
+  var title = task1.get('title');
+  console.log(title);
+
+  console.log(task1.toJSON());
+  task1.toggle();
+  console.log(task1.toJSON());
 
 })();
