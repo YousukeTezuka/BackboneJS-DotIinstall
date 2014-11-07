@@ -6,24 +6,18 @@
     defaults: {
       title: "do someting!",
       completed: false
-    },
-    validate: function(attrs) {
-      if (_.isEmpty(attrs.title)){
-        return "title must not empty!"
-      }
-    },
-    toggle : function() {
-      this.set('completed', !this.get('completed'));
     }
   });
 
-  var task1 = new Task({
-    title: "do it!",
-    completed: true
+  var task = new Task();
+
+  // View
+
+  var TaskVeiw = Backbone.View.extend({
+    tagName: "li"
   });
 
-  console.log(task1.toJSON());
-  task1.set({title: ''}, {validate: true});
-  console.log(task1.toJSON());
+  var taskView = new TaskVeiw({model: task});
+  console.log(taskView.el);
 
 })();
