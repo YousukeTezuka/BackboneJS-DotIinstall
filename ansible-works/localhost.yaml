@@ -1,0 +1,58 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  sudo: no
+  vars:
+    homebrew_packages_taps:
+      - homebrew/binary
+      - homebrew/dupes
+    homebrew_packages_packages:
+      - { name: android-sdk }
+      - { name: ansible }
+      - { name: gibo }
+      - { name: git }
+      - { name: go }
+      - { name: gradle110 }
+      - { name: npm }
+      - { name: node }
+      - { name: python }
+      - { name: scala }
+    homebrew_cask_packages_packages:
+      - adobe-reader
+      - android-studio
+      - atom
+      - dropbox
+      - eclipse-jee
+      - evernote
+      - firefox
+      - flip4mac
+      - genymotion
+      - github
+      - google-chrome
+      - google-japanese-ime
+      - intellij-idea-ce
+      - kindle
+      - onepassword
+      - openoffice
+      - the-unarchiver
+      - spark
+      - vagrant
+      - virtualbox
+      - vlc
+    atom_packages_packages:
+      - atom-color-highlight
+      - autocomplete-plus
+      - emmet
+      - file-icons
+      - highlight-selected
+      - linter
+      - linter-jshint
+      - minimap
+      - pretty-json
+      - project-manager
+      - recent-files
+      - script
+  roles:
+    - hnakamur.homebrew-packages
+    - hnakamur.homebrew-cask-packages
+    - hnakamur.atom-packages
