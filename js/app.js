@@ -13,8 +13,8 @@
 
   // View
 
-  var TaskVeiw = Backbone.View.extend({
-    tagName: "li",
+  var TaskView = Backbone.View.extend({
+    tagName: 'li',
     template: _.template( $("#task-template").html() ),
     render: function(){
       var template = this.template(this.model.toJSON());
@@ -28,6 +28,16 @@
   var Tasks = Backbone.Collection.extend({
     model: Task
   });
+  var TasksView = Backbone.View.extend({
+    tagName: 'ul',
+    render: function(){
+      this.collection.each(function(task){
+        var taskView = new TaskView({model: task});
+        this.$el.append(taskView.render().el);
+      }, this);
+      return this;
+    }
+  });
   var tasks = new Tasks([
     {
       title: 'task1',
@@ -40,6 +50,8 @@
       title: 'task3'
     }
   ]);
-  console.log(tasks.toJSON());
+
+  var tasksView = new TasksView({collection: tasks});
+  $('#tasks').html(tasksView.render().el);
 
 })();
